@@ -3,65 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMX | Arquitectura de Escenarios</title>
+    <title>MMX | Inteligencia Operativa</title>
     <style>
         body {
             background-color: #000000;
-            color: #00FF41; /* Verde Matrix */
+            color: #00FF41; /* Verde Sistema */
             font-family: 'Courier New', Courier, monospace;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            border: 1px solid #333;
+            padding: 40px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: auto;
-            border: 1px solid #00FF41;
+            border: 1px solid #222;
             padding: 40px;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
         }
 
         h1, h2, h3 {
-            color: #FFD700; /* Amarillo Oro / Sistema Antiguo */
+            color: #FFD700; /* Amarillo de Sistema */
             text-transform: uppercase;
-            border-bottom: 1px solid #FFD700;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #222;
             padding-bottom: 10px;
         }
 
         .highlight {
             color: #FFD700;
-            font-weight: bold;
         }
 
-        ul {
-            list-style-type: square;
-        }
-
-        li {
-            margin-bottom: 10px;
+        .phase-container {
+            margin-top: 20px;
         }
 
         .phase {
-            margin-bottom: 25px;
-            padding-left: 15px;
             border-left: 2px solid #FFD700;
+            padding-left: 15px;
+            margin-bottom: 25px;
         }
 
-        .contact-box {
+        .phase-title {
+            font-weight: bold;
+            color: #FFD700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .sector-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .contact-section {
             margin-top: 50px;
-            border: 1px dashed #FFD700;
-            padding: 20px;
+            border: 1px solid #333;
+            padding: 25px;
             text-align: center;
         }
 
-        .footer-note {
-            margin-top: 30px;
-            font-size: 0.8em;
+        .footer-terminal {
+            margin-top: 40px;
             text-align: center;
-            color: #888;
-            letter-spacing: 2px;
+            font-size: 0.8em;
+            color: #444;
         }
 
         a {
@@ -69,94 +77,85 @@
             text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Efecto de parpadeo para el cursor */
         .cursor {
             display: inline-block;
-            width: 10px;
-            height: 20px;
+            width: 8px;
+            height: 18px;
             background: #00FF41;
             animation: blink 1s infinite;
             vertical-align: middle;
         }
 
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>MMX: Arquitectura de Escenarios <span class="cursor"></span></h1>
-        <p>IDENTIDAD FORMAL: <span class="highlight">EDUARDO MACIAS</span></p>
+        <h1>MMX Inteligencia Operativa <span class="cursor"></span></h1>
     </header>
 
     <section>
-        <h2>Resumen Ejecutivo</h2>
-        <p>Esta plataforma constituye el eje central para la implementación de soluciones de inteligencia estratégica y seguridad corporativa. Nuestra misión no es la erradicación utópica de las amenazas, sino su mitigación efectiva hasta consolidarlas como un <span class="highlight">riesgo residual tolerable</span>, garantizando la continuidad operativa en entornos de alta volatilidad.</p>
+        <h2>Resumen de Operaciones</h2>
+        <p>Unidad especializada en servicios de inteligencia operativa y mitigación de riesgos. Nuestra gestión se enfoca en la obtención de datos críticos para la toma de decisiones legales, administrativas y corporativas en entornos de alta complejidad.</p>
     </section>
 
     <section>
-        <h2>Servicios Proyectados</h2>
+        <h2>Servicios</h2>
         <ul>
-            <li><span class="highlight">Inteligencia Estratégica:</span> Marcos de referencia para la toma de decisiones críticas.</li>
-            <li><span class="highlight">Gestión de Riesgos Corporativos:</span> Evaluación de vulnerabilidades físicas y operativas.</li>
-            <li><span class="highlight">Arquitectura de Escenarios:</span> Diseño de protocolos de anticipación y respuesta.</li>
-            <li><span class="highlight">Auditoría de Seguridad:</span> Diagnóstico técnico bajo estándares internacionales.</li>
+            <li><span class="highlight">Operaciones de Inteligencia Corporativa:</span> Análisis de integridad y detección de amenazas internas.</li>
+            <li><span class="highlight">Due Diligence Profunda:</span> Investigación técnica de estructuras, vínculos y perfiles.</li>
+            <li><span class="highlight">Contrainteligencia:</span> Identificación de fugas de valor y blindaje de activos.</li>
         </ul>
     </section>
 
     <section>
-        <h2>Metodología de Trabajo</h2>
-        
-        <div class="phase">
-            <h3>Fase I: Diagnóstico y Mapeo</h3>
-            <p>Inmersión profunda en la estructura organizacional para identificar brechas de seguridad y vulnerabilidades latentes.</p>
-        </div>
-
-        <div class="phase">
-            <h3>Fase II: Transferencia de Capacidades</h3>
-            <p>Empoderamiento del cliente mediante el entrenamiento técnico para la detección proactiva de amenazas.</p>
-        </div>
-
-        <div class="phase">
-            <h3>Fase III: Consolidación y Respaldo</h3>
-            <p>Ejecución autónoma por parte del cliente con el respaldo estratégico y validación continua de MMX.</p>
+        <h2>Metodología</h2>
+        <div class="phase-container">
+            <div class="phase">
+                <span class="phase-title">FASE I: DIAGNÓSTICO DE EXTRACCIÓN DE VALOR</span>
+                Evaluación interna y de mercado para determinar puntos de pérdida de activos.
+            </div>
+            <div class="phase">
+                <span class="phase-title">FASE II: MAPEO DE ESTRUCTURAS</span>
+                Identificación de jerarquías reales y nodos de influencia operativos.
+            </div>
+            <div class="phase">
+                <span class="phase-title">FASE III: NOMENCLATURA DE RED</span>
+                Codificación y diagramación del organigrama de la red detectada.
+            </div>
+            <div class="phase">
+                <span class="phase-title">FASE IV: CONSTRUCCIÓN DE EXPEDIENTE</span>
+                Formalización de hallazgos para procesos en ámbitos penales o administrativos.
+            </div>
         </div>
     </section>
 
     <section>
         <h2>Sectores de Aplicación</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <ul>
-                <li>Sector Financiero</li>
-                <li>Logística y Carga</li>
-                <li>Energía (Oil & Gas)</li>
-                <li>Minería</li>
-                <li>Retail</li>
-            </ul>
-            <ul>
-                <li>Sector Farmacéutico</li>
-                <li>Telecomunicaciones</li>
-                <li>Agroindustria</li>
-                <li>Turismo de Alto Perfil</li>
-                <li>Manufactura Avanzada</li>
-            </ul>
+        <div class="sector-grid">
+            <div>- Sector Financiero</div>
+            <div>- Logística y Carga</div>
+            <div>- Energía (Oil & Gas)</div>
+            <div>- Minería</div>
+            <div>- Retail y Consumo</div>
+            <div>- Farmacéutico</div>
+            <div>- Telecomunicaciones</div>
+            <div>- Agroindustria</div>
+            <div>- Turismo y Hospitalidad</div>
+            <div>- Manufactura Avanzada</div>
         </div>
     </section>
 
-    <div class="contact-box">
-        <p>CANAL DE CONTACTO OFICIAL: <br>
-        <a href="mailto:mmxagencia@porton.me">mmxagencia@porton.me</a></p>
+    <div class="contact-section">
+        Toda comunicación es estrictamente confidencial.<br>
+        <a href="mailto:mmxagencia@porton.me">mmxagencia@porton.me</a>
     </div>
 
-    <div class="footer-note">
-        TERMINAL_INFO: NO TODAS LAS OPERACIONES SON ACEPTADAS.
+    <div class="footer-terminal">
+        NO TODAS LAS OPERACIONES SON ACEPTADAS. <br>
+        © 2026 MMX AGENCIA.
     </div>
 </div>
 
