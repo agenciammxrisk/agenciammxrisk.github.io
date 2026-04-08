@@ -1,163 +1,668 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMX | Inteligencia Operativa</title>
-    <style>
-        body {
-            background-color: #000000;
-            color: #00FF41; /* Verde Sistema */
-            font-family: 'Courier New', Courier, monospace;
-            line-height: 1.6;
-            margin: 0;
-            padding: 40px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMX | Inteligencia Operativa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .container {
-            max-width: 850px;
-            margin: auto;
-            border: 1px solid #222;
-            padding: 40px;
-        }
+    :root {
+      --black:      #080808;
+      --off-black:  #111111;
+      --dark:       #1a1a1a;
+      --mid:        #3a3a3a;
+      --rule:       #2a2a2a;
+      --muted:      #666666;
+      --light:      #aaaaaa;
+      --white:      #f0ede8;
+      --accent:     #c8b89a;
+      --accent-dim: #6b5d4a;
+    }
 
-        h1, h2, h3 {
-            color: #FFD700; /* Amarillo de Sistema */
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-        }
+    html { scroll-behavior: smooth; }
 
-        .highlight {
-            color: #FFD700;
-        }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+      cursor: default;
+    }
 
-        .phase-container {
-            margin-top: 20px;
-        }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
 
-        .phase {
-            border-left: 2px solid #FFD700;
-            padding-left: 15px;
-            margin-bottom: 25px;
-        }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 48px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    nav.scrolled {
+      border-color: var(--rule);
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0.18em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-right {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .nav-link {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--white); }
 
-        .phase-title {
-            font-weight: bold;
-            color: #FFD700;
-            display: block;
-            margin-bottom: 5px;
-        }
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 80px;
+      position: relative;
+    }
 
-        .sector-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            font-size: 0.9em;
-            margin-top: 20px;
-        }
+    .hero-counter {
+      position: absolute;
+      top: 50%;
+      right: 48px;
+      transform: translateY(-50%);
+      font-size: 160px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      color: var(--rule);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
 
-        .contact-section {
-            margin-top: 50px;
-            border: 1px solid #333;
-            padding: 25px;
-            text-align: center;
-        }
+    .hero-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
 
-        .footer-terminal {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.8em;
-            color: #444;
-        }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(42px, 6vw, 80px);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      max-width: 700px;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
 
-        a {
-            color: #FFD700;
-            text-decoration: none;
-        }
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
 
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 18px;
-            background: #00FF41;
-            animation: blink 1s infinite;
-            vertical-align: middle;
-        }
+    .hero-body {
+      max-width: 520px;
+      color: var(--light);
+      font-size: 12px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
 
-        @keyframes blink { 50% { opacity: 0; } }
-    </style>
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 6px;
+      transition: color 0.2s, border-color 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+    .hero-cta:hover { color: var(--accent); }
+    .hero-cta::after { content: '→'; }
+
+    .hero-rule {
+      position: absolute;
+      bottom: 0; left: 48px; right: 48px;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    section {
+      padding: 100px 48px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .section-num {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+    }
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .section-tag {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 32px;
+      max-width: 640px;
+    }
+
+    #problema .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    #problema p {
+      color: var(--light);
+      font-size: 12px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    #problema .highlight {
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+      color: var(--white);
+      font-size: 13px;
+      line-height: 1.8;
+      margin: 32px 0;
+    }
+
+    #fases .phases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 8px;
+    }
+
+    .phase-card {
+      background: var(--off-black);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .phase-card:hover { background: var(--dark); }
+
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.4s ease;
+    }
+    .phase-card:hover::before { height: 100%; }
+
+    .phase-card.optional {
+      border: 1px dashed var(--rule);
+      background: transparent;
+    }
+    .phase-card.optional:hover { background: var(--off-black); }
+
+    .phase-num {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--accent-dim);
+      margin-bottom: 16px;
+    }
+    .phase-card.optional .phase-num { color: var(--muted); }
+
+    .phase-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .phase-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .phase-optional-label {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      padding: 3px 8px;
+      margin-bottom: 16px;
+    }
+
+    #servicios .services-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin-top: 8px;
+    }
+
+    .service-item {
+      padding: 36px 28px;
+      background: var(--off-black);
+      transition: background 0.3s;
+    }
+    .service-item:hover { background: var(--dark); }
+
+    .service-icon {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .service-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    #sectores .sectors-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      margin-top: 8px;
+    }
+
+    .sector-tag {
+      padding: 12px 20px;
+      background: var(--off-black);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: background 0.2s, color 0.2s;
+    }
+    .sector-tag:hover {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    #cierre {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: none;
+      position: relative;
+    }
+
+    #cierre .closing-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(32px, 4vw, 60px);
+      line-height: 1.12;
+      color: var(--white);
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+    #cierre .closing-line em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    #cierre .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    #cierre .contact-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    #cierre .contact-email {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    #cierre .contact-email:hover { color: var(--white); }
+
+    #cierre .disclaimer {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-align: right;
+    }
+
+    footer {
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--rule);
+    }
+    footer span {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-right { display: none; }
+      #hero { padding: 0 24px 60px; }
+      .hero-counter { font-size: 80px; right: 24px; }
+      section { padding: 64px 24px; }
+      #problema .two-col { grid-template-columns: 1fr; gap: 32px; }
+      #fases .phases-grid { grid-template-columns: 1fr; }
+      #servicios .services-list { grid-template-columns: 1fr; }
+      #cierre { padding: 64px 24px; }
+      footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+      #cierre .disclaimer { position: static; text-align: left; margin-top: 48px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>MMX Inteligencia Operativa <span class="cursor"></span></h1>
-    </header>
-
-    <section>
-        <h2>Resumen de Operaciones</h2>
-        <p>Unidad especializada en servicios de inteligencia operativa y mitigación de riesgos. Nuestra gestión se enfoca en la obtención de datos críticos para la toma de decisiones legales, administrativas y corporativas en entornos de alta complejidad.</p>
-    </section>
-
-    <section>
-        <h2>Servicios</h2>
-        <ul>
-            <li><span class="highlight">Operaciones de Inteligencia Corporativa:</span> Análisis de integridad y detección de amenazas internas.</li>
-            <li><span class="highlight">Due Diligence Profunda:</span> Investigación técnica de estructuras, vínculos y perfiles.</li>
-            <li><span class="highlight">Contrainteligencia:</span> Identificación de fugas de valor y blindaje de activos.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Metodología</h2>
-        <div class="phase-container">
-            <div class="phase">
-                <span class="phase-title">FASE I: DIAGNÓSTICO DE EXTRACCIÓN DE VALOR</span>
-                Evaluación interna y de mercado para determinar puntos de pérdida de activos.
-            </div>
-            <div class="phase">
-                <span class="phase-title">FASE II: MAPEO DE ESTRUCTURAS</span>
-                Identificación de jerarquías reales y nodos de influencia operativos.
-            </div>
-            <div class="phase">
-                <span class="phase-title">FASE III: NOMENCLATURA DE RED</span>
-                Codificación y diagramación del organigrama de la red detectada.
-            </div>
-            <div class="phase">
-                <span class="phase-title">FASE IV: CONSTRUCCIÓN DE EXPEDIENTE</span>
-                Formalización de hallazgos para procesos en ámbitos penales o administrativos.
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Sectores de Aplicación</h2>
-        <div class="sector-grid">
-            <div>- Sector Financiero</div>
-            <div>- Logística y Carga</div>
-            <div>- Energía (Oil & Gas)</div>
-            <div>- Minería</div>
-            <div>- Retail y Consumo</div>
-            <div>- Farmacéutico</div>
-            <div>- Telecomunicaciones</div>
-            <div>- Agroindustria</div>
-            <div>- Turismo y Hospitalidad</div>
-            <div>- Manufactura Avanzada</div>
-        </div>
-    </section>
-
-    <div class="contact-section">
-        Toda comunicación es estrictamente confidencial.<br>
-        <a href="mailto:mmxagencia@porton.me">mmxagencia@porton.me</a>
+  <nav id="nav">
+    <a class="nav-logo" href="#">MMX</a>
+    <div class="nav-right">
+      <a class="nav-link" href="#problema">El Problema</a>
+      <a class="nav-link" href="#fases">Metodología</a>
+      <a class="nav-link" href="#servicios">Servicios</a>
+      <a class="nav-link" href="#cierre">Contacto</a>
     </div>
+  </nav>
 
-    <div class="footer-terminal">
-        NO TODAS LAS OPERACIONES SON ACEPTADAS. <br>
-        © 2026 MMX AGENCIA.
+  <section id="hero">
+    <div class="hero-counter">01</div>
+    <p class="hero-label">Inteligencia Operativa Corporativa</p>
+    <h1 class="hero-title">
+      Más allá<br/>del <em>control</em><br/>interno.
+    </h1>
+    <p class="hero-body">
+      Detectamos estructuras de extracción de valor no visibles en operaciones corporativas —
+      donde los controles formales no llegan porque la confianza los volvió innecesarios.
+    </p>
+    <a class="hero-cta" href="#problema">Entender el riesgo</a>
+    <div class="hero-rule"></div>
+  </section>
+
+  <section id="problema">
+    <div class="section-meta">
+      <span class="section-num">01</span>
+      <div class="section-rule"></div>
+      <span class="section-tag">El Problema</span>
     </div>
-</div>
+    <div class="two-col">
+      <div class="reveal">
+        <h2 class="section-heading">El riesgo no está donde están mirando.</h2>
+        <p>
+          La extracción de valor sostenida dentro de una operación no requiere debilidad institucional.
+          Requiere acceso legitimado, reputación consolidada y un proceso que nadie revisa
+          porque nadie tiene razón para hacerlo.
+        </p>
+        <p>
+          Ese es el perfil de mayor riesgo: no el control que falla,
+          sino el que nunca fue necesario porque la confianza lo sustituyó.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="highlight">
+          El riesgo no comienza cuando la pérdida es detectable. Comienza antes — cuando
+          una estructura paralela ha acumulado suficiente capacidad como para influir
+          sobre los mismos procesos que debían contenerla.
+        </div>
+        <p>
+          En ese punto el problema deja de ser económico.
+          La operación no solo está siendo extraída — está siendo <strong>orientada</strong>.
+        </p>
+        <p>
+          Ese es el escenario que este producto está diseñado para identificar
+          antes de que se vuelva visible por sus consecuencias.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="fases">
+    <div class="section-meta">
+      <span class="section-num">02</span>
+      <div class="section-rule"></div>
+      <span class="section-tag">Metodología</span>
+    </div>
+    <h2 class="section-heading reveal">Cuatro fases. Un modelo accionable.</h2>
+    <div class="phases-grid">
+
+      <div class="phase-card reveal">
+        <p class="phase-num">FASE I</p>
+        <h3 class="phase-title">Diagnóstico de Exposición</h3>
+        <p class="phase-desc">
+          Identificación de los espacios de acceso legitimado donde existe flujo
+          de valor sin revisión, y su correspondencia con mercados externos.
+        </p>
+      </div>
+
+      <div class="phase-card reveal">
+        <p class="phase-num">FASE II</p>
+        <h3 class="phase-title">Mapeo de Estructura</h3>
+        <p class="phase-desc">
+          Identificación de la red que sostiene y protege el flujo —
+          sus nodos, sus vínculos y su lógica de operación.
+        </p>
+      </div>
+
+      <div class="phase-card reveal">
+        <p class="phase-num">FASE III</p>
+        <h3 class="phase-title">Documentación Estructural</h3>
+        <p class="phase-desc">
+          Nomenclatura formal de la red: actores, roles, relaciones y capacidad
+          acumulada, expresados en un modelo trazable.
+        </p>
+      </div>
+
+      <div class="phase-card optional reveal">
+        <span class="phase-optional-label">Opcional</span>
+        <p class="phase-num">FASE IV</p>
+        <h3 class="phase-title">Expediente Accionable</h3>
+        <p class="phase-desc">
+          Construcción del soporte documental necesario para una acción
+          legal, penal o administrativa sobre la estructura identificada.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="section-meta">
+      <span class="section-num">03</span>
+      <div class="section-rule"></div>
+      <span class="section-tag">Servicios</span>
+    </div>
+    <h2 class="section-heading reveal">Capacidad operativa especializada.</h2>
+    <div class="services-list">
+
+      <div class="service-item reveal">
+        <p class="service-icon">◆</p>
+        <h3 class="service-title">Inteligencia Corporativa</h3>
+        <p class="service-desc">
+          Lectura estructural de operaciones para detectar capas no visibles
+          de extracción de valor sostenida.
+        </p>
+      </div>
+
+      <div class="service-item reveal">
+        <p class="service-icon">◆</p>
+        <h3 class="service-title">Due Diligence Profunda</h3>
+        <p class="service-desc">
+          Investigación técnica de estructuras, vínculos y perfiles
+          en entornos de alta complejidad operativa.
+        </p>
+      </div>
+
+      <div class="service-item reveal">
+        <p class="service-icon">◆</p>
+        <h3 class="service-title">Contrainteligencia</h3>
+        <p class="service-desc">
+          Identificación de vectores de extracción activos
+          y blindaje de activos estratégicos de la operación.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="sectores">
+    <div class="section-meta">
+      <span class="section-num">04</span>
+      <div class="section-rule"></div>
+      <span class="section-tag">Sectores</span>
+    </div>
+    <h2 class="section-heading reveal">Presencia en sectores de alta exposición.</h2>
+    <div class="sectors-wrap reveal">
+      <span class="sector-tag">Minería</span>
+      <span class="sector-tag">Energía · Oil &amp; Gas</span>
+      <span class="sector-tag">Logística y Carga</span>
+      <span class="sector-tag">Sector Financiero</span>
+      <span class="sector-tag">Farmacéutico</span>
+      <span class="sector-tag">Agroindustria</span>
+      <span class="sector-tag">Manufactura Avanzada</span>
+      <span class="sector-tag">Telecomunicaciones</span>
+      <span class="sector-tag">Retail y Consumo</span>
+      <span class="sector-tag">Turismo y Hospitalidad</span>
+    </div>
+  </section>
+
+  <section id="cierre">
+    <div class="section-meta">
+      <span class="section-num">05</span>
+      <div class="section-rule"></div>
+      <span class="section-tag">Contacto</span>
+    </div>
+    <p class="closing-line reveal">
+      No todas las<br/><em>operaciones</em><br/>son aceptadas.
+    </p>
+    <div class="contact-block reveal">
+      <span class="contact-label">Contacto directo</span>
+      <a class="contact-email" href="mailto:mmxagencia@porton.me">mmxagencia@porton.me</a>
+    </div>
+    <div class="disclaimer">
+      Toda comunicación es<br/>estrictamente confidencial.
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 MMX AGENCIA</span>
+    <span>Documento de uso confidencial — Distribución restringida</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
