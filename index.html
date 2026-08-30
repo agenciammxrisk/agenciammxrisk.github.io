@@ -226,6 +226,65 @@
             font-weight: bold;
         }
 
+        /* ===== SECCIÓN COSTO DE EXTRACCIÓN ===== */
+        .cost-highlight {
+            font-size: 1.5rem;
+            color: #d4af37;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            margin: 4px 0 8px;
+            line-height: 1.2;
+        }
+
+        .cost-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .cost-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 8px;
+            padding: 18px 20px;
+        }
+
+        .cost-card h4 {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+
+        .cost-card .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #d4af37;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .cost-card p {
+            font-size: 0.85rem;
+            color: #b3b3b3;
+            margin: 0;
+        }
+
+        .cost-closing {
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid rgba(255,255,255,0.08);
+            padding: 20px 24px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        .cost-closing p {
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
         /* ===== LOS 5 MOMENTOS ===== */
         .moments-grid {
             display: grid;
@@ -431,6 +490,9 @@
             .moments-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            .cost-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 800px) {
@@ -464,6 +526,10 @@
                 align-items: flex-start;
                 gap: 12px;
             }
+
+            .cost-highlight {
+                font-size: 1.2rem;
+            }
         }
 
         @media (max-width: 500px) {
@@ -477,6 +543,7 @@
 
 <div class="wrap">
 
+    <!-- ===== HEADER ===== -->
     <header class="site-header">
         <div class="brand-container">
             <img src="mmx_risk.jpg" alt="MMX Risk Logo" class="brand-logo" />
@@ -488,6 +555,7 @@
         <span class="badge">🔒 Acceso Seguro</span>
     </header>
 
+    <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="kicker">Seguridad para organizaciones bajo presión criminal</div>
         <h1>
@@ -506,6 +574,81 @@
 
     <hr class="sep" />
 
+    <!-- ===== NUEVA SECCIÓN: EL COSTO DE LA EXTRACCIÓN ===== -->
+    <section>
+        <span class="section-tag">El costo de la extracción criminal en México</span>
+        <h2>Una realidad que ninguna empresa puede ignorar</h2>
+        
+        <p>
+            En México, la delincuencia organizada logra extraer valor de la industria por 
+            <strong style="color:#fff;">cientos de miles de millones de pesos</strong> cada año.
+        </p>
+
+        <div class="cost-highlight">
+            El impacto económico de la violencia alcanzó 4.5 billones de pesos en 2024
+        </div>
+        <p class="muted" style="margin-top:4px;">Equivalente al 18% del PIB nacional — aproximadamente 245,000 millones de dólares.</p>
+
+        <p style="margin-top:12px;">
+            Solo en extorsión, las estimaciones ubican un drenaje cercano a 
+            <strong style="color:#fff;">900 millones de dólares anuales</strong> para la economía mexicana.
+        </p>
+
+        <div class="cost-grid">
+            <div class="cost-card">
+                <h4>Minería</h4>
+                <span class="number">-34.5%</span>
+                <p>Caída de la inversión minera entre 2012 y 2022 (de 8,043 a 5,265 millones de dólares).</p>
+                <p style="margin-top:4px;font-size:0.8rem;color:#9a9a9a;">Costos por inseguridad incrementaron entre 5% y 10%; en algunos casos, afectaciones de hasta 10–12% del flujo operativo.</p>
+            </div>
+            <div class="cost-card">
+                <h4>Transporte y Logística</h4>
+                <span class="number">29%</span>
+                <p>Del robo de carga en 2023 correspondió a alimentos y bebidas; otro 12% a materiales de construcción e industriales.</p>
+                <p style="margin-top:4px;font-size:0.8rem;color:#9a9a9a;">El impacto encarece insumos, distorsiona mercados y desincentiva la inversión en regiones clave.</p>
+            </div>
+            <div class="cost-card">
+                <h4>Agricultura y Agroindustria</h4>
+                <span class="number">$7,200 – $10,800 M</span>
+                <p>Estimación anual de extorsión en el sector del aguacate en Michoacán.</p>
+                <p style="margin-top:4px;font-size:0.8rem;color:#9a9a9a;">En limón, la cifra oscila entre $1,713 y $3,426 millones de pesos anuales.</p>
+            </div>
+            <div class="cost-card">
+                <h4>Energía e Industria</h4>
+                <span class="number">18.4%</span>
+                <p>Del valor de la industria manufacturera que podría representar la economía criminal.</p>
+                <p style="margin-top:4px;font-size:0.8rem;color:#9a9a9a;">El crimen organizado es un riesgo de severidad extremadamente alta en manufactura, construcción y energía.</p>
+            </div>
+        </div>
+
+        <div class="cost-closing">
+            <p>
+                El costo total a consecuencia de la inseguridad y el delito en unidades económicas 
+                representó <strong style="color:#fff;">120,200 millones de pesos en 2023</strong> (0.67% del PIB).
+            </p>
+            <p class="muted">
+                La extorsión es la actividad criminal que más impacta a grandes, medianas y pequeñas empresas, 
+                con un crecimiento sostenido en la última década.
+            </p>
+            <p style="margin-top:12px;">
+                Aunque se ha observado una evolución en la actuación de las autoridades, aún estamos lejos 
+                de resultados óptimos en la interrupción de los mecanismos de extracción y los mercados ilícitos.
+            </p>
+            <p>
+                Ante este panorama, la visión tradicional de la seguridad corporativa, incluso con los 
+                últimos avances tecnológicos, <strong style="color:#fff;">se queda corta</strong> frente a las 
+                dinámicas de la delincuencia organizada y ocasional.
+            </p>
+            <p>
+                Las empresas sufren presión externa e interna: nuevas formas de interferencia, control territorial, 
+                captación de personal, colusión y captura progresiva de funciones, procesos y decisiones.
+            </p>
+        </div>
+    </section>
+
+    <hr class="sep" />
+
+    <!-- ===== EL ESCENARIO ===== -->
     <section>
         <span class="section-tag">El escenario</span>
         <h2>Cuando la estructura de seguridad ya no corresponde al escenario</h2>
@@ -526,6 +669,7 @@
 
     <hr class="sep" />
 
+    <!-- ===== PRESIÓN EXTERNA / INTERNA ===== -->
     <section>
         <span class="section-tag">Trabajamos con organizaciones bajo presión criminal</span>
         <h2>Presión externa · Presión interna</h2>
@@ -560,6 +704,7 @@
 
     <hr class="sep" />
 
+    <!-- ===== NO SOLO MITIGAMOS ===== -->
     <section>
         <span class="section-tag">No solo mitigamos la exposición</span>
         <h2>Intervenimos sobre el escenario real</h2>
@@ -578,6 +723,7 @@
 
     <hr class="sep" />
 
+    <!-- ===== LOS 5 MOMENTOS ===== -->
     <section>
         <span class="section-tag">Reorganizamos la función de seguridad</span>
         <h2>Cinco momentos de intervención</h2>
@@ -613,6 +759,7 @@
 
     <hr class="sep" />
 
+    <!-- ===== CAPACIDAD PERMANENTE ===== -->
     <section>
         <span class="section-tag">Una intervención temporal</span>
         <h2>Para construir capacidad permanente</h2>
@@ -629,6 +776,7 @@
 
     <hr class="sep" />
 
+    <!-- ===== CONFIDENCIALIDAD ===== -->
     <section>
         <span class="section-tag">Confidencialidad</span>
         <h2>Discreción absoluta</h2>
@@ -648,6 +796,7 @@
 
     <hr class="sep" />
 
+    <!-- ===== FORMULARIO ===== -->
     <section id="contacto">
         <span class="section-tag">Acceso Seguro</span>
         <h2>Si su organización está bajo presión, podemos hablar</h2>
@@ -707,6 +856,7 @@
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <p>MMX Risk · Inteligencia Corporativa &amp; Seguridad Estratégica</p>
         <p style="margin-top:4px; font-size:0.7rem; color:#5a5a5a;">
