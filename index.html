@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inteligencia Corporativa · Seguridad Estratégica</title>
     <meta name="description" content="Intervención estratégica para organizaciones bajo presión criminal. Diseño de arquitectura de seguridad, inteligencia ejecutable y recuperación de control." />
+    
+    <meta property="og:title" content="Inteligencia Corporativa · Seguridad Estratégica" />
+    <meta property="og:description" content="Intervención estratégica para organizaciones bajo presión criminal." />
+    <meta property="og:type" content="website" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
         /* ===== RESET & BASE ===== */
         *{box-sizing:border-box;margin:0;padding:0}
@@ -32,7 +38,7 @@
             min-height: 100vh;
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER & LOGO ===== */
         .site-header {
             padding: 12px 0 28px;
             border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -42,6 +48,18 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
         }
 
         .logo-area {
@@ -213,7 +231,7 @@
         /* ===== LOS 5 MOMENTOS ===== */
         .moments-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(5, 1fr);
             gap: 12px;
             margin-top: 16px;
         }
@@ -411,6 +429,12 @@
         }
 
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 850px) {
+            .moments-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 800px) {
             .wrap {
                 padding: 24px 20px 40px;
@@ -422,10 +446,6 @@
 
             .grid-2 {
                 grid-template-columns: 1fr;
-            }
-
-            .moments-grid {
-                grid-template-columns: 1fr 1fr;
             }
 
             .form-container {
@@ -444,7 +464,7 @@
             .site-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 12px;
             }
         }
 
@@ -459,16 +479,17 @@
 
 <div class="wrap">
 
-    <!-- ===== HEADER ===== -->
     <header class="site-header">
-        <div class="logo-area">
-            <span class="brand">Inteligencia Corporativa</span>
-            <span class="tagline">Seguridad Estratégica · Acceso Confidencial</span>
+        <div class="brand-container">
+            <img src="logo.png" alt="Agencia MMX" class="brand-logo" />
+            <div class="logo-area">
+                <span class="brand">Inteligencia Corporativa</span>
+                <span class="tagline">Seguridad Estratégica · Acceso Confidencial</span>
+            </div>
         </div>
         <span class="badge">🔒 Acceso Seguro</span>
     </header>
 
-    <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="kicker">Seguridad para organizaciones bajo presión criminal</div>
         <h1>
@@ -487,7 +508,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== EL PROBLEMA ===== -->
     <section>
         <span class="section-tag">El escenario</span>
         <h2>Cuando la estructura de seguridad ya no corresponde al escenario</h2>
@@ -508,7 +528,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== PRESIÓN EXTERNA / INTERNA ===== -->
     <section>
         <span class="section-tag">Trabajamos con organizaciones bajo presión criminal</span>
         <h2>Presión externa · Presión interna</h2>
@@ -543,7 +562,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== NO SOLO MITIGAMOS ===== -->
     <section>
         <span class="section-tag">No solo mitigamos la exposición</span>
         <h2>Intervenimos sobre el escenario real</h2>
@@ -562,7 +580,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== LOS 5 MOMENTOS ===== -->
     <section>
         <span class="section-tag">Reorganizamos la función de seguridad</span>
         <h2>Cinco momentos de intervención</h2>
@@ -598,7 +615,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== CAPACIDAD PERMANENTE ===== -->
     <section>
         <span class="section-tag">Una intervención temporal</span>
         <h2>Para construir capacidad permanente</h2>
@@ -615,7 +631,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== CONFIDENCIALIDAD ===== -->
     <section>
         <span class="section-tag">Confidencialidad</span>
         <h2>Discreción absoluta</h2>
@@ -635,18 +650,16 @@
 
     <hr class="sep" />
 
-    <!-- ===== FORMULARIO ===== -->
     <section id="contacto">
         <span class="section-tag">Acceso Seguro</span>
         <h2>Si su organización está bajo presión, podemos hablar</h2>
 
         <div class="form-container">
             <p class="subtitle">
-                No utilizamos formularios abiertos para iniciar una intervención. 
-                El primer contacto se establece mediante un canal privado.
+                Establezca un primer canal seguro de comunicación para coordinar una evaluación confidencial.
             </p>
 
-            <form class="secure-form" action="https://formspree.io/f/TU_ID_DE_FORMULARIO" method="POST">
+            <form class="secure-form" action="#" method="POST">
                 <div class="form-group">
                     <label for="nombre">Nombre Completo</label>
                     <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required />
@@ -667,7 +680,6 @@
                     <textarea id="mensaje" name="Mensaje" rows="3" placeholder="Escribe aquí..."></textarea>
                 </div>
 
-                <!-- Selección del medio de contacto -->
                 <div class="form-group">
                     <label>¿Cómo prefiere que nos comuniquemos?</label>
                     <div class="contact-options">
@@ -697,7 +709,6 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <p>MMX Risk · Inteligencia Corporativa &amp; Seguridad Estratégica</p>
         <p style="margin-top:4px; font-size:0.7rem; color:#5a5a5a;">
