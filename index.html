@@ -162,13 +162,6 @@
             line-height: 1.2;
         }
 
-        h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin: 16px 0 6px;
-        }
-
         p {
             color: #d0d0d0;
             font-size: 1rem;
@@ -570,58 +563,24 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 850px) {
-            .moments-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .cost-grid {
-                grid-template-columns: 1fr;
-            }
-            .method-grid {
-                grid-template-columns: 1fr;
-            }
+            .moments-grid { grid-template-columns: repeat(3, 1fr); }
+            .cost-grid { grid-template-columns: 1fr; }
+            .method-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 800px) {
-            .wrap {
-                padding: 24px 20px 40px;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-
-            .form-container {
-                padding: 24px 20px;
-            }
-
-            .contact-options {
-                gap: 10px;
-            }
-
-            .option {
-                padding: 6px 12px;
-                font-size: 0.85rem;
-            }
-
-            .site-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .cost-highlight {
-                font-size: 1.2rem;
-            }
+            .wrap { padding: 24px 20px 40px; }
+            .hero h1 { font-size: 1.8rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .form-container { padding: 24px 20px; }
+            .contact-options { gap: 10px; }
+            .option { padding: 6px 12px; font-size: 0.85rem; }
+            .site-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .cost-highlight { font-size: 1.2rem; }
         }
 
         @media (max-width: 500px) {
-            .moments-grid {
-                grid-template-columns: 1fr;
-            }
+            .moments-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -632,7 +591,7 @@
     <!-- ===== HEADER ===== -->
     <header class="site-header">
         <div class="brand-container">
-            <img src="mmx_risk.jpg" alt="MMX Risk Logo" class="brand-logo" />
+            <img src="mmx_riesgo.jpg" alt="MMX Risk Logo" class="brand-logo" />
             <div class="logo-area">
                 <span class="brand">Inteligencia Corporativa</span>
                 <span class="tagline">Seguridad Estratégica · Acceso Confidencial</span>
@@ -819,8 +778,7 @@
         </p>
 
         <div class="method-grid">
-            
-            <!-- ETAPA 1: DIAGNÓSTICO -->
+            <!-- ETAPA 1 -->
             <div class="method-card">
                 <span class="num">1</span>
                 <h4>Diagnóstico Estratégico</h4>
@@ -833,7 +791,7 @@
                 </div>
             </div>
 
-            <!-- ETAPA 2: DISEÑO -->
+            <!-- ETAPA 2 -->
             <div class="method-card">
                 <span class="num">2</span>
                 <h4>Arquitectura de Seguridad</h4>
@@ -846,7 +804,7 @@
                 </div>
             </div>
 
-            <!-- ETAPA 3: EJECUCIÓN -->
+            <!-- ETAPA 3 -->
             <div class="method-card">
                 <span class="num">3</span>
                 <h4>Ejecución y Combate</h4>
@@ -858,7 +816,6 @@
                     <p><strong>Entregable:</strong> Expediente Penal Ejecutable enfocado en la desintegración de la organización criminal + Acciones Puntuales contra su mercado y estructura.</p>
                 </div>
             </div>
-
         </div>
 
         <div class="method-note">
@@ -941,7 +898,7 @@
 
     <hr class="sep" />
 
-    <!-- ===== FORMULARIO ===== -->
+    <!-- ===== FORMULARIO DE TELEGRAM ===== -->
     <section id="contacto">
         <span class="section-tag">Acceso Seguro</span>
         <h2>Si su organización está bajo presión, podemos hablar</h2>
@@ -951,7 +908,7 @@
                 Establezca un primer canal seguro de comunicación para coordinar una evaluación confidencial.
             </p>
 
-            <form class="secure-form" action="https://formspree.io/f/TU_ID_DE_FORMULARIO" method="POST">
+            <form class="secure-form" id="telegramForm">
                 <div class="form-group">
                     <label for="nombre">Nombre Completo</label>
                     <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required />
@@ -990,7 +947,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn">Enviar Consulta · Confidencial</button>
+                <button type="submit" id="btnEnviar" class="btn">Enviar Consulta · Confidencial</button>
             </form>
 
             <div class="trust-badges">
@@ -1010,6 +967,61 @@
     </footer>
 
 </div>
+
+<!-- SCRIPT DE ENVÍO DIRECTO A TELEGRAM -->
+<script>
+document.getElementById('telegramForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // LÍNEAS 432 Y 433: SUSTITUYE LOS VALORES ENTRE COMILLAS
+    const BOT_TOKEN = '8606987832:AAEH1qtMudk-5k0TMP1ku87pWu8yVxF9uQ'; // <<< LÍNEA 432
+    const CHAT_ID = '1698823620';               // <<< LÍNEA 433
+
+    const btn = document.getElementById('btnEnviar');
+    btn.disabled = true;
+    btn.innerText = 'Enviando...';
+
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const telefono = document.getElementById('telefono').value;
+    const mensaje = document.getElementById('mensaje').value || 'Sin mensaje adicional';
+    const medio = document.querySelector('input[name="Medio"]:checked').value;
+
+    const text = `🚨 *NUEVA CONSULTA DE ACCESO SEGURO*\n\n` +
+                 `👤 *Nombre:* ${nombre}\n` +
+                 `📧 *Correo:* ${email}\n` +
+                 `📞 *Teléfono:* ${telefono}\n` +
+                 `💬 *Medio Preferido:* ${medio}\n` +
+                 `📝 *Mensaje:* ${mensaje}`;
+
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: text,
+            parse_mode: 'Markdown'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            alert('Su mensaje ha sido enviado exitosamente. Nos pondremos en contacto a la brevedad.');
+            document.getElementById('telegramForm').reset();
+        } else {
+            alert('Ocurrió un error al enviar el mensaje. Por favor intente de nuevo.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al conectar con el servidor.');
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.innerText = 'Enviar Consulta · Confidencial';
+    });
+});
+</script>
 
 </body>
 </html>
