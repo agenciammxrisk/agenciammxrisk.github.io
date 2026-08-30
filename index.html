@@ -50,16 +50,16 @@
             gap: 16px;
         }
 
+        /* NUEVO: Contenedor para alinear logo e info de marca */
         .brand-container {
             display: flex;
             align-items: center;
-            gap: 16px;
         }
 
-        .brand-logo {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
+        /* NUEVO: Estilos específicos para el logo en imagen */
+        img.brand-logo {
+            max-height: 40px; /* Altura máxima para que no rompa el diseño */
+            margin-right: 12px; /* Espacio entre el logo y el texto */
         }
 
         .logo-area {
@@ -481,7 +481,7 @@
 
     <header class="site-header">
         <div class="brand-container">
-            <img src="logo.png" alt="Agencia MMX" class="brand-logo" />
+            <img src="mmx_risk.jpg" alt="MMX Risk Logo" class="brand-logo" />
             <div class="logo-area">
                 <span class="brand">Inteligencia Corporativa</span>
                 <span class="tagline">Seguridad Estratégica · Acceso Confidencial</span>
@@ -522,7 +522,7 @@
         <p>
             En estos escenarios, administrar la estructura existente puede dejar de ser suficiente.
             <strong style="color:#fff;">Reorganizamos la función de seguridad</strong> para recuperar 
-            coherencia entre la exposición real, la operación, la amenaza y la capacidad de respuesta.
+            coherencia entre la exposición real, la operation, la amenaza y la capacidad de respuesta.
         </p>
     </section>
 
