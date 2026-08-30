@@ -3,13 +3,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inteligencia Corporativa · Seguridad Estratégica</title>
-    <meta name="description" content="Intervención estratégica para organizaciones bajo presión criminal. Diseño de arquitectura de seguridad, inteligencia ejecutable y recuperación de control." />
     
-    <meta property="og:title" content="Inteligencia Corporativa · Seguridad Estratégica" />
-    <meta property="og:description" content="Intervención estratégica para organizaciones bajo presión criminal." />
+    <!-- SEO de Respuesta a Crisis & Presión Criminal -->
+    <title>MMX RISK | Soluciones Estratégicas contra la Extorsión y Presión Criminal</title>
+    <meta name="description" content="Arquitectura de escenarios para neutralizar la extorsión, cobro de piso e interferencia criminal sobre empresas y particulares. Desactivación de riesgos de alto impacto." />
+    <meta name="keywords" content="como terminar con la extorsion a empresas, soluciones contra el crimen organizado, neutralizar cobro de piso, proteccion contra extorsion criminal, arquitectura de escenarios de crisis, MMX RISK" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.mmxrisk.com/" />
+
+    <!-- Open Graph para Envíos Privados Confidenciales -->
+    <meta property="og:title" content="MMX RISK | Control de Escenarios de Crisis" />
+    <meta property="og:description" content="Respaldo estratégico y neutralización de presión criminal sobre particulares y organizaciones." />
+    <meta property="og:image" content="https://www.mmxrisk.com/mmx_risk.jpg" />
+    <meta property="og:url" content="https://www.mmxrisk.com/" />
     <meta property="og:type" content="website" />
 
+    <!-- Datos Estructurados Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "MMX RISK",
+      "url": "https://www.mmxrisk.com/",
+      "logo": "https://www.mmxrisk.com/mmx_risk.jpg",
+      "description": "Desactivación de escenarios de presión criminal, extorsión y amenazas de alto impacto sobre particulares y organizaciones.",
+      "knowsAbout": [
+        "Desactivación de Extorsión y Amenazas",
+        "Neutralización de Presión Criminal",
+        "Arquitectura de Escenarios de Crisis",
+        "Gestión de Riesgo Extremo y Respaldo Operativo"
+      ]
+    }
+    </script>
+
+    <!-- Fuentes y Recursos Externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
@@ -206,8 +233,7 @@
         .pressure-card ul li {
             color: #b3b3b3;
             font-size: 0.9rem;
-            padding: 4px 0;
-            padding-left: 14px;
+            padding: 4px 0 4px 14px;
             position: relative;
         }
 
@@ -281,7 +307,7 @@
         /* ===== METODOLOGÍA 3 ETAPAS ===== */
         .method-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin-top: 20px;
         }
@@ -309,23 +335,16 @@
             margin-bottom: 4px;
         }
 
-        .method-card .duration {
-            font-size: 0.85rem;
-            color: #b3b3b3;
-            margin-bottom: 8px;
-        }
-
-        .method-card .duration strong {
-            color: #ffffff;
-        }
-
+        .method-card .duration,
         .method-card .description {
             font-size: 0.85rem;
             color: #b3b3b3;
             margin-bottom: 8px;
         }
 
-        .method-card .description strong {
+        .method-card .duration strong,
+        .method-card .description strong,
+        .method-card .deliverable p strong {
             color: #ffffff;
         }
 
@@ -341,10 +360,6 @@
             font-size: 0.8rem;
             color: #cfcfcf;
             margin: 0;
-        }
-
-        .method-card .deliverable p strong {
-            color: #ffffff;
         }
 
         .method-note {
@@ -534,6 +549,11 @@
             background: #e2e2e2;
         }
 
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .trust-badges {
             display: flex;
             gap: 20px;
@@ -564,8 +584,7 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 850px) {
             .moments-grid { grid-template-columns: repeat(3, 1fr); }
-            .cost-grid { grid-template-columns: 1fr; }
-            .method-grid { grid-template-columns: 1fr; }
+            .cost-grid, .method-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 800px) {
@@ -588,10 +607,9 @@
 
 <div class="wrap">
 
-    <!-- ===== HEADER ===== -->
     <header class="site-header">
         <div class="brand-container">
-            <img src="mmx_riesgo.jpg" alt="MMX Risk Logo" class="brand-logo" />
+            <img src="mmx_risk.jpg" alt="MMX Risk Logo" class="brand-logo" />
             <div class="logo-area">
                 <span class="brand">Inteligencia Corporativa</span>
                 <span class="tagline">Seguridad Estratégica · Acceso Confidencial</span>
@@ -600,7 +618,6 @@
         <span class="badge">🔒 Acceso Seguro</span>
     </header>
 
-    <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="kicker">Seguridad para organizaciones bajo presión criminal</div>
         <h1>
@@ -619,7 +636,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== COSTO DE EXTRACCIÓN ===== -->
     <section>
         <span class="section-tag">El costo de la extracción criminal en México</span>
         <h2>Una realidad que ninguna empresa puede ignorar</h2>
@@ -693,7 +709,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== EL ESCENARIO ===== -->
     <section>
         <span class="section-tag">El escenario</span>
         <h2>Cuando la estructura de seguridad ya no corresponde al escenario</h2>
@@ -714,7 +729,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== PRESIÓN EXTERNA / INTERNA ===== -->
     <section>
         <span class="section-tag">Trabajamos con organizaciones bajo presión criminal</span>
         <h2>Presión externa · Presión interna</h2>
@@ -749,7 +763,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== NO SOLO MITIGAMOS ===== -->
     <section>
         <span class="section-tag">No solo mitigamos la exposición</span>
         <h2>Intervenimos sobre el escenario real</h2>
@@ -768,7 +781,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== METODOLOGÍA DE INTERVENCIÓN ===== -->
     <section>
         <span class="section-tag">Metodología de Intervención</span>
         <h2>El proceso: diagnóstico · diseño · ejecución</h2>
@@ -778,7 +790,6 @@
         </p>
 
         <div class="method-grid">
-            <!-- ETAPA 1 -->
             <div class="method-card">
                 <span class="num">1</span>
                 <h4>Diagnóstico Estratégico</h4>
@@ -791,7 +802,6 @@
                 </div>
             </div>
 
-            <!-- ETAPA 2 -->
             <div class="method-card">
                 <span class="num">2</span>
                 <h4>Arquitectura de Seguridad</h4>
@@ -804,7 +814,6 @@
                 </div>
             </div>
 
-            <!-- ETAPA 3 -->
             <div class="method-card">
                 <span class="num">3</span>
                 <h4>Ejecución y Combate</h4>
@@ -825,7 +834,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== LOS 5 MOMENTOS ===== -->
     <section>
         <span class="section-tag">Reorganizamos la función de seguridad</span>
         <h2>Cinco momentos de intervención</h2>
@@ -861,7 +869,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== CAPACIDAD PERMANENTE ===== -->
     <section>
         <span class="section-tag">Una intervención temporal</span>
         <h2>Para construir capacidad permanente</h2>
@@ -878,7 +885,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== CONFIDENCIALIDAD ===== -->
     <section>
         <span class="section-tag">Confidencialidad</span>
         <h2>Discreción absoluta</h2>
@@ -898,7 +904,6 @@
 
     <hr class="sep" />
 
-    <!-- ===== FORMULARIO DE TELEGRAM ===== -->
     <section id="contacto">
         <span class="section-tag">Acceso Seguro</span>
         <h2>Si su organización está bajo presión, podemos hablar</h2>
@@ -908,7 +913,7 @@
                 Establezca un primer canal seguro de comunicación para coordinar una evaluación confidencial.
             </p>
 
-            <form class="secure-form" id="telegramForm">
+            <form class="secure-form" id="contactForm">
                 <div class="form-group">
                     <label for="nombre">Nombre Completo</label>
                     <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required />
@@ -958,7 +963,6 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <p>MMX Risk · Inteligencia Corporativa &amp; Seguridad Estratégica</p>
         <p style="margin-top:4px; font-size:0.7rem; color:#5a5a5a;">
@@ -968,52 +972,37 @@
 
 </div>
 
-<!-- SCRIPT DE ENVÍO DIRECTO A TELEGRAM -->
 <script>
-document.getElementById('telegramForm').addEventListener('submit', function(e) {
+document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
-    const BOT_TOKEN = '8606987832:AAEHlqtMudk-5k0vTMP1ku87pWu8yVxF9uQ';
-    const CHAT_ID = '1698823620';
 
     const btn = document.getElementById('btnEnviar');
     btn.disabled = true;
     btn.innerText = 'Enviando...';
 
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const telefono = document.getElementById('telefono').value;
-    const mensaje = document.getElementById('mensaje').value || 'Sin mensaje adicional';
-    const medio = document.querySelector('input[name="Medio"]:checked').value;
+    const formData = {
+        nombre: document.getElementById('nombre').value,
+        email: document.getElementById('email').value,
+        telefono: document.getElementById('telefono').value,
+        mensaje: document.getElementById('mensaje').value || 'Sin mensaje adicional',
+        medio: document.querySelector('input[name="Medio"]:checked').value
+    };
 
-    const text = `🚨 NUEVA CONSULTA DE ACCESO SEGURO\n\n` +
-                 `👤 Nombre: ${nombre}\n` +
-                 `📧 Correo: ${email}\n` +
-                 `📞 Teléfono: ${telefono}\n` +
-                 `💬 Medio Preferido: ${medio}\n` +
-                 `📝 Mensaje: ${mensaje}`;
-
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    fetch('/api/secure-contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: text
-        })
+        body: JSON.stringify(formData)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.ok) {
+    .then(response => {
+        if (response.ok) {
             alert('Su mensaje ha sido enviado exitosamente. Nos pondremos en contacto a la brevedad.');
-            document.getElementById('telegramForm').reset();
+            document.getElementById('contactForm').reset();
         } else {
-            console.error('Telegram API Error:', data);
-            alert(`Ocurrió un error al enviar el mensaje: ${data.description || 'Error desconocido'}`);
+            alert('Ocurrió un error al enviar la consulta. Intente de nuevo más tarde.');
         }
     })
-    .catch(error => {
-        console.error('Error de red:', error);
-        alert('Error al conectar con el servidor.');
+    .catch(() => {
+        alert('Error de conexión al enviar el formulario.');
     })
     .finally(() => {
         btn.disabled = false;
