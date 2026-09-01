@@ -1,20 +1,25 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
-<head> 
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO & Metadata -->
-    <title>MMX RISK | Análisis Estratégico e Inteligencia de Entorno</title>
-    <meta name="description" content="Publicaciones, análisis de riesgo y perspectivas de inteligencia estratégica sobre seguridad corporativa y presión criminal en México." />
+    <title>Blog & Análisis | MMX RISK</title>
+    <meta name="description" content="Análisis estratégico, arquitectura de escenarios de crisis y evaluación de la seguridad corporativa frente al crimen organizado." />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.mmxrisk.com/blog.html" />
+    <link rel="canonical" href="https://agenciammxrisk.github.io/blog/blog.html" />
 
-    <!-- Fuentes y Recursos Externos -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="MMX RISK | Blog & Análisis Estratégico" />
+    <meta property="og:description" content="Reflexiones sobre el impacto del crimen organizado en la industria y los límites de la seguridad corporativa tradicional." />
+    <meta property="og:image" content="https://agenciammxrisk.github.io/mmx_risk.jpg" />
+    <meta property="og:url" content="https://agenciammxrisk.github.io/blog/blog.html" />
+    <meta property="og:type" content="website" />
+
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-    
+
     <style>
         /* ===== RESET & BASE ===== */
         *{box-sizing:border-box;margin:0;padding:0}
@@ -39,7 +44,7 @@
             min-height: 100vh;
         }
 
-        /* ===== HEADER & LOGO ===== */
+        /* ===== HEADER ===== */
         .site-header {
             padding: 16px 0 32px;
             border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -54,7 +59,6 @@
         .brand-container {
             display: flex;
             align-items: center;
-            text-decoration: none;
         }
 
         img.brand-logo {
@@ -74,6 +78,7 @@
             font-size: 1.5rem;
             color: #ffffff;
             letter-spacing: 1px;
+            text-decoration: none;
         }
 
         .logo-area .tagline {
@@ -82,6 +87,12 @@
             text-transform: uppercase;
             letter-spacing: 2.4px;
             margin-top: 4px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .nav-link {
@@ -99,7 +110,7 @@
 
         /* ===== HERO BLOG ===== */
         .hero {
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
 
         .hero .kicker {
@@ -126,15 +137,15 @@
             font-weight: 300;
         }
 
-        /* ===== SEPARADORES ===== */
+        /* ===== SEPARADOR ===== */
         .sep {
             border: none;
             border-top: 1px solid rgba(255,255,255,0.04);
-            margin: 40px 0;
+            margin: 36px 0;
         }
 
-        /* ===== LISTA DE ARTÍCULOS ===== */
-        .article-feed {
+        /* ===== GRID DE ARTÍCULOS ===== */
+        .articles-list {
             display: flex;
             flex-direction: column;
             gap: 24px;
@@ -144,33 +155,38 @@
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.04);
             border-radius: 8px;
-            padding: 28px 30px;
+            padding: 28px 32px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
             text-decoration: none;
             display: block;
-            transition: border-color 0.2s ease, background 0.2s ease;
         }
 
         .article-card:hover {
-            border-color: rgba(212, 175, 55, 0.3);
-            background: rgba(255,255,255,0.03);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
         }
 
         .article-meta {
-            font-size: 0.7rem;
-            color: #d4af37;
+            font-size: 0.75rem;
+            color: #9a9a9a;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .article-meta .category {
+            color: #d4af37;
         }
 
         .article-card h2 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            font-size: 1.45rem;
+            font-size: 1.5rem;
             color: #ffffff;
             margin-bottom: 10px;
-            line-height: 1.3;
+            line-height: 1.25;
         }
 
         .article-card p {
@@ -181,18 +197,14 @@
         }
 
         .read-more {
-            font-size: 0.8rem;
-            color: #ffffff;
+            font-size: 0.85rem;
+            color: #d4af37;
             font-weight: 600;
-            letter-spacing: 1px;
             text-transform: uppercase;
+            letter-spacing: 1px;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-        }
-
-        .article-card:hover .read-more {
-            color: #d4af37;
         }
 
         /* ===== FOOTER ===== */
@@ -206,11 +218,10 @@
             letter-spacing: 0.4px;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 800px) {
             .wrap { padding: 24px 20px 40px; }
             .hero h1 { font-size: 1.8rem; }
-            .article-card { padding: 20px 22px; }
+            .article-card { padding: 20px; }
             .site-header { flex-direction: column; align-items: flex-start; gap: 12px; }
         }
     </style>
@@ -220,37 +231,46 @@
 <div class="wrap">
 
     <header class="site-header">
-        <a href="index.html" class="brand-container">
-            <img src="mmx_risk.jpg" alt="MMX Risk Logo" class="brand-logo" />
+        <div class="brand-container">
+            <a href="../index.html">
+                <img src="../mmx_risk.jpg" alt="MMX Risk Logo" class="brand-logo" />
+            </a>
             <div class="logo-area">
-                <span class="brand">Inteligencia Corporativa</span>
+                <a href="../index.html" class="brand">Inteligencia Corporativa</a>
                 <span class="tagline">Seguridad Estratégica · Acceso Confidencial</span>
             </div>
-        </a>
-        <a href="index.html" class="nav-link">← Volver al Sitio Principal</a>
+        </div>
+        <nav class="header-nav">
+            <a href="../index.html" class="nav-link">Inicio</a>
+            <a href="../index.html#contacto" class="nav-link">Contacto</a>
+        </nav>
     </header>
 
     <section class="hero">
-        <div class="kicker">Análisis &amp; Perspectivas</div>
-        <h1>Lectura de Escenario e Inteligencia Aplicada</h1>
+        <div class="kicker">Publicaciones &amp; Análisis de Escenario</div>
+        <h1>Perspectivas sobre Seguridad Corporativa y Presión Criminal</h1>
         <p>
-            Análisis sobre dinámica criminal, fallas estructurales en seguridad corporativa 
-            y criterios de decisión en entornos de alta presión.
+            Análisis de riesgos de alto impacto, dinámicas de extorsión y la necesidad de 
+            reestructurar las estrategias de defensa operativa en entornos complejos.
         </p>
     </section>
 
     <hr class="sep" />
 
-    <main class="article-feed">
+    <main class="articles-list">
 
         <!-- Artículo 1 -->
-        <a href="blog/los-limites-de-la-seguridad-corporativa.html" class="article-card">
-            <span class="article-meta">Análisis Estratégico · 2026</span>
-            <h2>Los Límites de la Seguridad Corporativa en México: Por Qué el Blindaje Ya No Es Suficiente</h2>
+        <a href="loslimitesdelaseguridadcorporativa.html" class="article-card">
+            <div class="article-meta">
+                <span class="category">Análisis Estratégico</span>
+                <span>•</span>
+                <span>Lectura: 5 min</span>
+            </div>
+            <h2>Los Límites de la Seguridad Corporativa Tradicional</h2>
             <p>
-                Gastar más en seguridad sin una arquitectura de inteligencia de fondo solo genera un sobrecosto operativo permanente. Un análisis sobre el mito de la tecnología autónoma y los desplazamientos de punto de falla.
+                Por qué las auditorías, certificaciones y sistemas de vigilancia convencionales fallan frente a esquemas avanzados de extracción criminal y colusión interna.
             </p>
-            <span class="read-more">Leer Análisis Completo →</span>
+            <span class="read-more">Leer análisis completo &rarr;</span>
         </a>
 
     </main>
