@@ -67,50 +67,67 @@
         }
 
         /* ===== HEADER & LOGO ===== */
-.site-header {
-    padding: 16px 0 32px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-}
+        .site-header {
+            padding: 16px 0 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
 
-.brand-container {
-    display: flex;
-    align-items: center;
-}
+        .brand-container {
+            display: flex;
+            align-items: center;
+        }
 
-/* Aumentado el tamaño máximo de la imagen */
-img.brand-logo {
-    max-height: 65px; /* Antes 40px */
-    width: auto;
-    margin-right: 16px; /* Ajustado el espacio con el texto */
-}
+        img.brand-logo {
+            max-height: 65px;
+            width: auto;
+            margin-right: 16px;
+        }
 
-.logo-area {
-    display: flex;
-    flex-direction: column;
-}
+        .logo-area {
+            display: flex;
+            flex-direction: column;
+        }
 
-/* Aumentado el tamaño del título */
-.logo-area .brand {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 1.5rem; /* Antes 1.1rem */
-    color: #ffffff;
-    letter-spacing: 1px;
-}
+        .logo-area .brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
 
-.logo-area .tagline {
-    font-size: 0.75rem; /* Ligeramente ajustado */
-    color: #7a7a7a;
-    text-transform: uppercase;
-    letter-spacing: 2.4px;
-    margin-top: 4px;
-}
+        .logo-area .tagline {
+            font-size: 0.75rem;
+            color: #7a7a7a;
+            text-transform: uppercase;
+            letter-spacing: 2.4px;
+            margin-top: 4px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            font-size: 0.8rem;
+            color: #9a9a9a;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #d4af37;
+        }
 
         .badge {
             font-size: 0.7rem;
@@ -619,7 +636,10 @@ img.brand-logo {
                 <span class="tagline">Seguridad Estratégica · Acceso Confidencial</span>
             </div>
         </div>
-        <span class="badge">🔒 Acceso Seguro</span>
+        <nav class="header-nav">
+            <a href="blog.html" class="nav-link">Blog</a>
+            <span class="badge">🔒 Acceso Seguro</span>
+        </nav>
     </header>
 
     <section class="hero">
@@ -897,7 +917,7 @@ img.brand-logo {
                 Las intervenciones relacionadas con presión criminal requieren discreción.
                 Por la naturaleza de los escenarios en los que trabajamos, la información sobre 
                 organizaciones, personas, investigaciones, estructuras de seguridad y operaciones 
-                se trata bajo criterios estrictos de confidencialidad.
+                se trata bajo criterios strictly confidenciales.
             </p>
             <p class="muted">
                 La información operativa se comparte únicamente con quienes necesitan conocerla 
